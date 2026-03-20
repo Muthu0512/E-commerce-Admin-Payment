@@ -20,7 +20,7 @@ const __dirname = path.resolve()
 app.use(cookieParser())
 app.use(express.json({limit:"10mb"}))
 app.use(cors({
-  origin: "http://localhost:5173", // Allow your Vite dev server
+  origin: process.env.CLIENT_URL, // Allow your Vite dev server
   credentials: true,
 }))
 
@@ -36,7 +36,7 @@ app.use("/api/analytics",analyticsRoutes)
 if(process.env.NODE_ENV === "production"){
   app.use(express.static(path.join(__dirname,"/frontend/dist")))
 
-  app.get((req,res)=>{
+  app.get("*",(req,res)=>{
     res.sendFile(path.resolve(__dirname, "frontend","dist","index.html"))
   })
 }
