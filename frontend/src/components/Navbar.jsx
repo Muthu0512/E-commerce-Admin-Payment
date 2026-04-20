@@ -8,7 +8,7 @@ function Navbar() {
   const isAdmin = user?.role ==="admin";
 
   return (
-    <header className=" top-0 left-0 w-full sticky bg-gray-900 bg-opactiy-90  backdrop-blur-md shadow-2xl  z-40 transition-all duration-300  border-b  border-emerald-800  flex justify-between items-center px-10 py-5">
+    <header className=" top-0 left-0 w-full sticky bg-gray-900 bg-opactiy-90  backdrop-blur-md shadow-2xl  z-40 transition-all duration-300   border-b-2 border-emerald-400/30  flex justify-between items-center px-10 py-5">
       <div>
         <Link to="/" className="text-2xl md:text-3xl  text-nowrap font-semibold text-emerald-400">
           E-commerce

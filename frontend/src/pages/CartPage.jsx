@@ -15,7 +15,7 @@ const CartPage = () => {
   console.log("mongoDBcart", cart);
   return (
     <div className="min-h-screen  py-4  max-w-full ">
-      {cart.length == 0 ? (
+           {cart.length == 0 ? (
         <div className="flex flex-col gap-5 items-center justify-center pt-10">
           <ShoppingCartIcon className="size-32 " />
           <p className="text-xl">

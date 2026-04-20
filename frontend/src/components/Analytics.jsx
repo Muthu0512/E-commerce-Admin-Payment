@@ -77,7 +77,7 @@ const Analytics = () => {
             <XAxis dataKey={"date"}  stroke={"Green"}/>
             <YAxis yAxisId="left"   stroke="#f43f5e" width={50}  domain={[0 , "auto"]}/>
             <YAxis yAxisId="right" orientation="right" stroke="orange" domain={[ 0 ,"auto"]}/>
-            <Tooltip />
+            <Tooltip cursor="none"/>
             <Legend/>
             
             <Line yAxisId={"left"} type={"monotone"} dataKey={"sales"} name="Sales" activeDot={{r:5}} stroke="#f43f5e"/>

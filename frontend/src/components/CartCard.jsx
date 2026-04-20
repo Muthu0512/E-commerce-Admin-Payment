@@ -8,13 +8,13 @@ const CartCard = ({ product }) => {
   return (
     <div className=" overflow-hidden  ">
       <div className="bg-gray-900/60 rounded-xl border-2 border-gray-500 flex gap-5  justify-evenly items-center mb-4 px-auto py-2 ">
-        <section className="px-auto py-2 flex flex-col items-center justify-center gap-2  ">
+        <section className="px-auto py-2 flex flex-col items-center justify-center  gap-2  ">
           <img
             src={product.image}
             alt={product.name}
             className="size-20 object-cover rounded-lg"
           />
-          <h2 className=" text-emerald-500">{product.name.toUpperCase()}</h2>
+          <h2 className=" text-emerald-500">{product.name[0].toUpperCase() + product.name.slice(1) }</h2>
         </section>
         <section className="flex flex-col justify-center items-center gap-2 font-bold">
           

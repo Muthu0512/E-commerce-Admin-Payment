@@ -44,7 +44,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
           Featured Products{" "}
         </h2>
       <div className="relative mt-10 max-w-screen px-10 ">
-        <div className="  overflow-hidden flex  items-center justify-center px-12 py-6    rounded-md shadow-inner shadow-emerald-300 ">
+        <div className="  overflow-hidden flex  items-center justify-center px-12 py-6 my-5 rounded-md shadow-inner shadow-emerald-600 ">
           <div  className="flex gap-5  transition-transform duration-300 ease-in-out px-4" style={{transform:`translateX(-${currentIndex * (100/noOfItems)}%)`}}>
          
        

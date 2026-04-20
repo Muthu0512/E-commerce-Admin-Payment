@@ -1,10 +1,8 @@
 import { ShoppingCart } from "lucide-react";
 import { toast } from "react-hot-toast";
-import { useUserStore } from "../stores/useUserStore";
 import { useCartStore } from "../stores/useCartStore";
 
 const CategoryCard = ({ product }) => {
- 
   const { addItemsToCart } = useCartStore();
 
   function handleClick() {

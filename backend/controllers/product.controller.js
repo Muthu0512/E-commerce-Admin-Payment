@@ -105,7 +105,7 @@ export const getRecommendedProducts = async (req, res) => {
     res.json(products);
   } catch (error) {
     console.log("Error from recommended controller", error.message);
-    res.stauts(500).json({ message: "Server Error", Error: error.message });
+    res.stauts(500).json({ message: "Server Error", error: error.message });
   }
 };
 

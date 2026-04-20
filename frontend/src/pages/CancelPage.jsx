@@ -1,4 +1,4 @@
-import { XCircle,ArrowRight , LucideSmile} from 'lucide-react'
+import { XCircle,ArrowLeft , LucideSmile} from 'lucide-react'
 import React from 'react'
 import {Link} from "react-router-dom"
 
@@ -20,8 +20,8 @@ const CancelPage = () => {
           to={"/"}
           className="text-gray-300  bg-gray-700 hover:bg-green-600 transition-all duration-400  rounded-md px-4 py-2 flex justify-between items-center gap-3"
         >
+          <ArrowLeft className="size-6" />
           <p>Continue shopping </p>
-          <ArrowRight className="size-6" />
         </Link>
       </div>
     </div>
