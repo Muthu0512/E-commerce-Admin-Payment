@@ -5,6 +5,7 @@ import OrderSummary from "../components/OrderSummary";
 import PeopleAlsoBought from "../components/PeopleAlsoBought";
 import { ArrowRight, ShoppingCartIcon, XCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import {easeOut, motion} from "framer-motion"
 
 const CartPage = () => {
   const { cart, getCartItems } = useCartStore();
@@ -14,9 +15,9 @@ const CartPage = () => {
   }, [getCartItems]);
   console.log("mongoDBcart", cart);
   return (
-    <div className="min-h-screen  py-4  max-w-full ">
+    <motion.div initial={{opacity:0,y:-100}} animate={{opacity:1,y:0}} transition={{duration:0.7}} className="min-h-screen  py-4  max-w-full ">
            {cart.length == 0 ? (
-        <div className="flex flex-col gap-5 items-center justify-center pt-10">
+        <div className="flex flex-col gap-5 items-center justify-center mx-5 pt-10">
           <ShoppingCartIcon className="size-32 " />
           <p className="text-xl">
             It's seems there is nothing in your cart , please add some products
@@ -34,7 +35,7 @@ const CartPage = () => {
         <div className="grid grid-cols-12 gap-4 px-5 justify-around  overflow-hidden ">
           <div className="h-fit w-full   bg-emerald-900 text-white/95 col-span-12 p-1 rounded-sm">
             <div className=" text-center  ">
-              <p className="overflow-hidden animate-pulse text-black font-extrabold text-md">
+              <p className="overflow-hidden animate-pulse text-gray-300 font-extrabold text-md">
                 If your purchase worth more than 2000 , you got a discount
                 coupon (worth 5 % to 50 %) on your next purchase{" "}
               </p>
@@ -53,7 +54,7 @@ const CartPage = () => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

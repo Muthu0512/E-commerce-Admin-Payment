@@ -2,7 +2,7 @@ import { Upload, PlusCircle, Loader } from "lucide-react";
 import React, { useState } from "react";
 import { useProductStore } from "../stores/useProductStore";
 import { toast } from "react-hot-toast";
-
+import {motion} from "framer-motion"
 const categories = [
   "jeans",
   "t-shirts",
@@ -54,7 +54,7 @@ const CreateProduct = () => {
   }
 
   return (
-    <div className="bg-gray-900 my-5 overflow-hidden flex flex-col gap-4 rounded-lg max-w-2/3">
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3.5}} className="bg-gray-900 my-5 overflow-hidden flex flex-col gap-4 rounded-lg max-w-2/3">
       <h5 className="text-emerald-400 text-3xl text-center px-20 py-4 ">
         Enter Product Details
       </h5>
@@ -167,7 +167,7 @@ const CreateProduct = () => {
           </button>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

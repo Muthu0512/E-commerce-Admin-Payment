@@ -4,14 +4,14 @@ import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import CategoryCard from "../components/CategoryCard";
 import { DeleteIcon} from "lucide-react"
+
 const CategoryPage = () => {
   const { getProductsByCategory, products } = useProductStore();
   const { category } = useParams();
   useEffect(() => {
     getProductsByCategory(category);
   }, [getProductsByCategory, category]);
-
-  console.log("products by category ", products);
+;
   return (
     <div className="flex items-center justify-center">
     <div className="min-h-screen w-full overflow-x-hidden space-y-4">

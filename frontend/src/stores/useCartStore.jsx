@@ -101,7 +101,7 @@ export const useCartStore = create((set, get) => ({
       console.log("coupon res from backend to frontend apply coupon " ,res.data)
       set({coupon:res.data , isCouponApplied:true})
       get().calculateTotal()
-      toast.success("Coupon applied successfully")
+      toast.success("Coupon Applied Successfully")
     } catch (error) {
       console.log(error.message)
       toast.error(error?.response?.data?.message || "Failed to apply coupon")
@@ -111,7 +111,7 @@ export const useCartStore = create((set, get) => ({
     try {
       set({coupon:null, isCouponApplied:false})
       get().calculateTotal()
-      toast.success("coupon removed")
+      toast.success("Coupon Removed")
     } catch (error) {
       toast.error(error.message)
     }

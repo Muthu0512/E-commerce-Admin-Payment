@@ -7,22 +7,24 @@ const CartCard = ({ product }) => {
 
   return (
     <div className=" overflow-hidden  ">
-      <div className="bg-gray-900/60 rounded-xl border-2 border-gray-500 flex gap-5  justify-evenly items-center mb-4 px-auto py-2 ">
+      <div className="bg-gray-900/60 rounded-xl border-2 border-gray-500 flex gap-5  justify-evenly items-center mb-4 px-auto py-2 px-3">
         <section className="px-auto py-2 flex flex-col items-center justify-center  gap-2  ">
           <img
             src={product.image}
             alt={product.name}
-            className="size-20 object-cover rounded-lg"
+            className="size-12 sm:size-20 object-cover rounded-lg"
           />
           <h2 className=" text-emerald-500">{product.name[0].toUpperCase() + product.name.slice(1) }</h2>
         </section>
         <section className="flex flex-col justify-center items-center gap-2 font-bold">
           
 
-          <h2>{product.description}</h2>
-          <p className="text-gray-300 text-center mt-1">₹ {product.price}</p>
+          <h2 className="text-sm md:text-lg">{product.description}</h2>
+          <p className="text-gray-300 text-center mt-1 text-sm sm:text-lg">₹ {product.price}</p>
         </section>
-        <section className="flex flex-col gap-4 items-center justify-center">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-8 text-sm sm:text-md ">
+
+        <section className="flex flex-col gap-2 items-center justify-center">
           <div className="flex justify-center items-center gap-2">
             <button
               onClick={() => updateQuantity(product._id, product.quantity - 1)}
@@ -52,6 +54,7 @@ const CartCard = ({ product }) => {
             <Trash2 />
           </button>
         </section>
+        </div>
       </div>
     </div>
   );

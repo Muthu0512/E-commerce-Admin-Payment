@@ -26,7 +26,7 @@ const PeopleAlsoBought = () => {
 
   if (isLoading)
     return (
-      <Loader className="h-screen size-20 flex items-end justify-center text-blue-700" />
+      <h2 className="h-screen w-full text-4xl text-emerald-600/80 animate-ping flex justify-center items-center">Please wait....</h2>
     );
 
   return (

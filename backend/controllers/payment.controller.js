@@ -85,10 +85,14 @@ export const checkoutSuccess = async (req, res) => {
   try {
     const { sessionId } = req.body;
 
+    if(!sessionId){
+      return res.status(400).json({success:true,message:"Session Id is missing"})
+    }
+
     const existingOrder = await  Order.findOne({stripeSessionId:sessionId})
 
     if(existingOrder){
-      return res.status(200).json({sucess:true,message:"Order already processed "})
+      return res.status(200).json({success:true,message:"Order already processed ",orderId:existingOrder._id,finalAmount:existingOrder.totalAmount})
     }
 
     const session = await stripe.checkout.sessions.retrieve(sessionId);
@@ -106,7 +110,8 @@ export const checkoutSuccess = async (req, res) => {
     //     if (totalAmount > (2000*100)) {
     //   await createNewCoupon(session.metadata.userId);
     // }
-      const products = JSON.parse(session.metadata.products)
+      const products = JSON.parse(session.metadata.products || "[]")
+      const paidAmount = session.amount_total /100
       const newOrder = new Order({
         user:session.metadata.userId,
         products:products.map(product =>({
@@ -120,13 +125,17 @@ export const checkoutSuccess = async (req, res) => {
       await newOrder.save()
 
       res.status(200).json({
+        success:true,
         message:"payment successful and order created",
-        orderId:newOrder._id
+        orderId:newOrder._id,
+        finalAmount:paidAmount,
       })
+    }else{
+      return res.status(400).json({success:false,message:"Payment status is pending.."})
     }
   } catch (error) {
     console.log("error from checkoutsuccess controller " ,error.message)
-    res.status(500).json({message:"server error", Error:error.message})
+    res.status(500).json({success:false,message:"server error", Error:error.message})
   }
 };
 
@@ -144,7 +153,7 @@ async function createNewCoupon(userId) {
   await Coupon.findOneAndDelete({userId})
   return await Coupon.findOneAndUpdate({userId:userId},
     {
-    code: "NEWYEAR" + Math.random().toString(36).substring(2, 8).toUpperCase(),
+    code: "LUCKY" + Math.random().toString(36).substring(2, 8).toUpperCase(),
     discount: Math.floor(Math.random()*(50-5+1)+5),
     expiryDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
     userId: userId,

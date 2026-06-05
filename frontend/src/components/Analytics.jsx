@@ -1,6 +1,7 @@
 import AnalyticsCard from "./AnalyticsCard.jsx";
 import { useState, useEffect } from "react";
 import axios from "../lib/axiosInstance.js";
+import {motion} from "framer-motion"
 import {
   Users,
   Package,
@@ -45,7 +46,7 @@ const Analytics = () => {
   }
 
   return (
-    <div className="min-h-screen max-w-screen  ">
+    <motion.div initial={{opacity:0,x:100}} animate={{opacity:1,x:0}} transition={{duration:1.5}} className="min-h-screen max-w-screen  ">
       <div className="max-w-screen  p-8 overflow-hidden">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
           <AnalyticsCard
@@ -84,7 +85,7 @@ const Analytics = () => {
             <Line yAxisId={"right"} type={"monotone"} dataKey={"revenue"} name="Revenue" activeDot={{r:5}} stroke= "orange"/>
         </LineChart>
       </ResponsiveContainer>
-    </div>
+    </motion.div>
   );
 };
 

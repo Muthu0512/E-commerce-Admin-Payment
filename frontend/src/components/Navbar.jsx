@@ -8,21 +8,21 @@ function Navbar() {
   const isAdmin = user?.role ==="admin";
 
   return (
-    <header className=" top-0 left-0 w-full sticky bg-gray-900 bg-opactiy-90  backdrop-blur-md shadow-2xl  z-40 transition-all duration-300   border-b-2 border-emerald-400/30  flex justify-between items-center px-10 py-5">
+    <header className=" top-0 left-0 w-full sticky bg-gray-900 bg-opactiy-90  backdrop-blur-md shadow-2xl  z-40 transition-all duration-300   border-b-2 border-emerald-400/30  flex justify-between items-center gap-2 px-5 sm:px-10 py-5">
       <div>
-        <Link to="/" className="text-2xl md:text-3xl  text-nowrap font-semibold text-emerald-400">
+        <Link to="/" className="text-xl sm:text-2xl md:text-3xl  text-nowrap font-semibold text-emerald-400">
           E-commerce
         </Link>
       </div>
-      <nav className=" flex flex-wrap justify-evenly items-center gap-4 group ">
+      <nav className=" flex flex-wrap justify-evenly items-center gap-4 sm:gap-4 group ">
         <Link to="/" className="text-emerald-400 flex items-center gap-0.5 group hover:text-emerald-800 transition duration-400 ease-in-out ">
-        <Home  className="size-3 sm:size-5"/>
+        <Home  className="size-4 sm:size-5"/>
         <span className="text-sm hidden sm:inline">Home</span>
             </Link>
         {user && (
           <Link to="/cart" className="relative flex items-center gap-1  text-emerald-400 group hover:text-emerald-800 transition duration-300 ">
-            <ShoppingCart className="relative  size:3 sm:size-6  " />
-            {cart.length > 0 &&<span className="absolute -top-4 -left-2 size:3 sm:size-5  bg-emerald-600/60  rounded-full  text-white text-center text-sm sm:text-xs font-bold ">
+            <ShoppingCart className="relative  size-4 sm:size-6  " />
+            {cart.length > 0 &&<span className="absolute -top-3 sm:-top-4 -left-2 size-3.5 sm:size-5  bg-emerald-600/60  rounded-full  text-white text-center text-xs sm:text-md font-bold ">
               {cart.length  }
             </span> }
             <span className="hidden sm:inline">Cart</span>
@@ -38,11 +38,11 @@ function Navbar() {
 
         {user ? (
           <button onClick={logout} className=" bg-red-800 rounded-lg px-2 py-1 group hover:bg-red-600 transition duration-300 ease-in-out">
-            <LogOut className="size-3 sm:size-5" />
+            <LogOut className="size-2.5 sm:size-5" />
             
           </button>
         ) : (
-          <>
+          <div className="flex flex-col sm:flex-row gap-3">
             <Link to='/login' className=" bg-emerald-700 rounded-lg px-2 py-1 flex justify-evenly items-center gap-1 group hover:bg-emerald-900 transition duration-300 ease-in-out">
               <LogIn className="size-2 sm:size-4"></LogIn>
               <span className="text-xs sm:text-sm">Login</span>
@@ -51,7 +51,7 @@ function Navbar() {
               <UserPlus className="size-2 sm:size-4"/>
               <span  className="text-xs sm:text-sm">Signup</span>
             </Link>
-          </>
+          </div>
         )}
       </nav>
     </header>

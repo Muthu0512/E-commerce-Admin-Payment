@@ -23,7 +23,7 @@ const GiftVoucher = () => {
     setUserInputCode("");
   }
   return (
-    <div className="bg-gray-900 w-full mx-8 my-4 p-2 text-center border-gray-600 border-2 rounded-md">
+    <div className="bg-gray-900 w-fit mx-8 my-4 p-2 text-center border-gray-600 border-2 rounded-md">
       <h4 className=" font-semibold py-3 text-emerald-500">
         Do you have a voucher or gift card ?
       </h4>
@@ -35,7 +35,7 @@ const GiftVoucher = () => {
           onChange={(e) => {
             setUserInputCode(e.target.value);
           }}
-          placeholder="DNMP0512"
+          placeholder="MY COUPON"
           className="bg-gray-300/20 px-2 py-1 text-center rounded-md focus:ring-1 ring-emerald-500 outline-none"
           required
         />
@@ -51,10 +51,10 @@ const GiftVoucher = () => {
           <span className="font-bold text-emerald-400 ">{coupon?.code}</span>
         </p>
         <p className="text-center mt-3 text-xs text-nowrap">
-          discount Percentage :
-          {/* <span className="font-bold text-emerald-400 ">
-            {coupon.discount} %
-          </span> */}
+          discount Percentage : 
+          <span className="font-bold text-emerald-400 ">
+            {coupon?.discount} %
+          </span>
         </p>
         {coupon && isCouponApplied && (
           <button

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import {useProductStore} from  "../stores/useProductStore"
 import {Trash2,Star} from "lucide-react"
+import {motion} from "framer-motion"
 
 const ProductsList = () => {
 const {products,toggleFeaturedProducts,deleteProduct} = useProductStore()
@@ -13,7 +14,7 @@ console.log("products",products)
 
   return (
 
-    <div className=' min-w-3xl overflow-hidden px-auto py-4 mt-4'>
+    <motion.div initial={{opacity:0,y:100}} animate={{opacity:1,y:0}} transition={{duration:1.5}} className=' min-w-3xl overflow-hidden px-auto py-4 mt-4'>
       <table className='min-w-full border-collapse '>
         <thead className='text-xl  bg-gray-800 text-emerald-600'>
           <tr className='tracking-wider  mb- uppercase'>
@@ -72,7 +73,7 @@ console.log("products",products)
         
          </tbody>
       </table>
-    </div>
+    </motion.div>
   )
 }
 
