@@ -54,12 +54,12 @@ const CreateProduct = () => {
   }
 
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3.5}} className="bg-gray-900 my-5 overflow-hidden flex flex-col gap-4 rounded-lg max-w-2/3">
-      <h5 className="text-emerald-400 text-3xl text-center px-20 py-4 ">
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3.5}} className="bg-gray-900 my-5  flex flex-col justify-evenly items-center gap-4  rounded-lg w-xl mx-8 px-4">
+      <h5 className="text-emerald-400 text-xl sm:text-3xl text-center px-2 py-4 ">
         Enter Product Details
       </h5>
 
-      <div className="space-y-4 px-4 text-white w-full">
+      <div className="space-y-5 px-2 w-full text-white ">
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col gap-2 mb-4 ">
             <label htmlFor="name" className="text-xl">
@@ -73,7 +73,7 @@ const CreateProduct = () => {
               onChange={(e) =>
                 setProductData({ ...productData, name: e.target.value })
               }
-              className="bg-gray-700 border-none rounded-md focus:outline-none px-3 py-2 "
+              className="bg-gray-700  border-none rounded-md focus:outline-none px-3 py-1.5 "
               required
             />
           </div>
@@ -89,7 +89,7 @@ const CreateProduct = () => {
               onChange={(e) =>
                 setProductData({ ...productData, description: e.target.value })
               }
-              className="bg-gray-700 border-none rounded-md focus:outline-none px-3 py-4 "
+              className="bg-gray-700 border-none rounded-md focus:outline-none px-3 py-2 "
               required
             />
           </div>
@@ -106,7 +106,7 @@ const CreateProduct = () => {
               onChange={(e) =>
                 setProductData({ ...productData, price: e.target.value })
               }
-              className="bg-gray-700 border-none rounded-md focus:outline-none px-3 py-2 "
+              className="bg-gray-700 border-none rounded-md focus:outline-none px-3 py-1.5 "
               required
             />
           </div>
@@ -122,7 +122,7 @@ const CreateProduct = () => {
               onChange={(e) =>
                 setProductData({ ...productData, category: e.target.value })
               }
-              className="bg-gray-700 border-none rounded-md focus:outline-none px-3 py-2 "
+              className="bg-gray-700 border-none rounded-md focus:outline-none px-3 py-1.5 "
               required
             >
               <option value="">select category</option>
@@ -133,7 +133,7 @@ const CreateProduct = () => {
               ))}
             </select>
           </div>
-          <div className="flex  gap-2 my-10 bg-gray-700 px-4 py-2 rounded-md cursor-pointer w-1/2 ">
+          <div className="flex  gap-2 my-10 bg-gray-700 px-4 py-1.5 rounded-md cursor-pointer w-full ">
             <input
               type="file"
               id="image"
@@ -143,8 +143,8 @@ const CreateProduct = () => {
               onChange={handleImage}
               className="hidden"
             />
-            <label htmlFor="image" className="text-xl ">
-              <Upload className="size-5 inline-block mr-4 " /> Upload image{" "}
+            <label htmlFor="image" className="text-lg  ">
+              <Upload className="size-5 inline-block mr-4  " /> Upload image{" "}
             </label>
             {productData.image && (
               <h2 className="text-s ">image uploaded successfully</h2>
@@ -157,7 +157,7 @@ const CreateProduct = () => {
           >
             {loading ? (
               <>
-                Loading .... <Loader className="size-8" />{" "}
+                Loading .... <Loader className="size-8 animate-spin" />{" "}
               </>
             ) : (
               <>

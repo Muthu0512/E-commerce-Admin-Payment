@@ -45,11 +45,11 @@ const AdminPage = () => {
         Admin Dashboard
       </motion.h1>
 
-      <div className="flex justify-center items-center gap-4 mx-auto my-6">
+      <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:2}} className="flex flex-col sm:flex-row justify-center items-center gap-4 mx-auto my-6">
         {tabs.map((tab) => (
           <button key={tab.id}
             onClick={(e) => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-4 py-2  rounded-md text-white cursor-pointer transition-colors duration-500 ${
+            className={`flex items-center gap-2 px-4 py-2 text-sm sm:text-2xl rounded-md text-white cursor-pointer transition-colors duration-500 ${
               activeTab === tab.id
                 ? "bg-emerald-500"
                 : "bg-gray-900 hover:bg-gray-700"
@@ -59,8 +59,8 @@ const AdminPage = () => {
             <tab.icon className="size-6"/>
           </button>
         ))}
-      </div>
-        <div  className="container max-w-screen flex justify-center items-center  mx-auto">
+      </motion.div>
+        <div  className="container w-screen flex justify-center items-center  mx-auto">
         {
           activeTab === "create"  && <CreateProduct/>
         }

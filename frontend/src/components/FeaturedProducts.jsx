@@ -39,38 +39,38 @@ const FeaturedProducts = ({ featuredProducts }) => {
   return (
     <div className="mt-5 flex px-auto py-4">
       <div className="w-full ">
-        <h2 className="text-3xl text-emerald-600 font-semibold underline">
+        <h2 className="text-2xl sm:text-3xl text-emerald-600 font-semibold underline">
           {" "}
           Featured Products{" "}
         </h2>
-      <div className="relative mt-10 max-w-screen px-10 ">
+      <div className="relative mt-10 max-w-screen px-8 ">
         <div className="  overflow-hidden flex  items-center justify-center px-12 py-6 my-5 rounded-md shadow-inner shadow-emerald-600 ">
           <div  className="flex gap-5  transition-transform duration-300 ease-in-out px-4" style={{transform:`translateX(-${currentIndex * (100/noOfItems)}%)`}}>
          
        
           {featuredProducts.map((product) => (
             <div
-              className="bg-black/40 shadow-2xl space-y-3 w-5  md:w-20 flex flex-col items-center   md:px-10 rounded-md"
+              className="bg-black/40 shadow-xl space-y-4  w-4 sm:w-8  flex flex-col  items-center   md:px-10 rounded-md"
               key={product._id} style={{minWidth:`${80/noOfItems}%`}}
             >
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-40 mt-2   rounded-md object-cover"
+                className="w-3/4  h-32 sm:h-40 mt-2   rounded-md object-cover"
                 loading="lazy"
               />
-              <h4 className="m-1 text-2xl text-emerald-500">
+              <h4 className="m-1 text-xl sm:text-2xl text-emerald-500">
                 {product.name.charAt(0).toUpperCase() + product.name.slice(1)}
               </h4>
-              <section className="flex justify-between items-center w-full m-4 ">
-                <p className="flex-1 font-bold text-lg text-blue-400/70">
+              <section className="flex justify-around items-center w-full my-1 px-3 py-2 ">
+                <p className="flex font-bold text-lg pl-4 text-blue-400/70">
                   ₹ {product.price}
                 </p>
                 <button onClick={()=>addItemsToCart(product)}
                   className=" bg-emerald-600 rounded-full p-2 cursor-pointer shadow-md  shadow-emerald-400 active:scale-90
                 transition-all duration-75"
                 >
-                  <ShoppingCart className="size-6" />
+                  <ShoppingCart className="size-5  sm:size-6" />
                 </button>
               </section>
             </div>

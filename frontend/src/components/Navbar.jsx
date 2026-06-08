@@ -8,7 +8,7 @@ function Navbar() {
   const isAdmin = user?.role ==="admin";
 
   return (
-    <header className=" top-0 left-0 w-full sticky bg-gray-900 bg-opactiy-90  backdrop-blur-md shadow-2xl  z-40 transition-all duration-300   border-b-2 border-emerald-400/30  flex justify-between items-center gap-2 px-5 sm:px-10 py-5">
+    <header className=" top-0 left-0 w-full sticky bg-gray-900 bg-opactiy-90  backdrop-blur-md shadow-2xl  z-40 transition-all duration-300   border-b-2 border-emerald-400/30  flex justify-between items-center gap-2 px-2 sm:px-10 py-5">
       <div>
         <Link to="/" className="text-xl sm:text-2xl md:text-3xl  text-nowrap font-semibold text-emerald-400">
           E-commerce
@@ -16,12 +16,12 @@ function Navbar() {
       </div>
       <nav className=" flex flex-wrap justify-evenly items-center gap-4 sm:gap-4 group ">
         <Link to="/" className="text-emerald-400 flex items-center gap-0.5 group hover:text-emerald-800 transition duration-400 ease-in-out ">
-        <Home  className="size-4 sm:size-5"/>
+        <Home  className="size-5 sm:size-7"/>
         <span className="text-sm hidden sm:inline">Home</span>
             </Link>
         {user && (
           <Link to="/cart" className="relative flex items-center gap-1  text-emerald-400 group hover:text-emerald-800 transition duration-300 ">
-            <ShoppingCart className="relative  size-4 sm:size-6  " />
+            <ShoppingCart className="relative  size-5 sm:size-7  " />
             {cart.length > 0 &&<span className="absolute -top-3 sm:-top-4 -left-2 size-3.5 sm:size-5  bg-emerald-600/60  rounded-full  text-white text-center text-xs sm:text-md font-bold ">
               {cart.length  }
             </span> }
@@ -31,14 +31,14 @@ function Navbar() {
 
         {isAdmin  && user&& (
           <Link to="/admin-dashboard" className="flex items-center gap-0.5 text-emerald-400   rounded-lg group hover:text-emerald-800 transition duration-400 ease-in-out">
-            <Lock className="size-3 sm:size-5" />
+            <Lock className="size-5 sm:size-7" />
             <span className="hidden sm:inline"> Dashboard</span>
           </Link>
         )}
 
         {user ? (
           <button onClick={logout} className=" bg-red-800 rounded-lg px-2 py-1 group hover:bg-red-600 transition duration-300 ease-in-out">
-            <LogOut className="size-2.5 sm:size-5" />
+            <LogOut className="size-4 sm:size-7" />
             
           </button>
         ) : (

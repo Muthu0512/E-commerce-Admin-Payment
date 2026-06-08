@@ -107,11 +107,9 @@ export const checkoutSuccess = async (req, res) => {
           { isActive: false }
         );
       }
-    //     if (totalAmount > (2000*100)) {
-    //   await createNewCoupon(session.metadata.userId);
-    // }
-      const products = JSON.parse(session.metadata.products || "[]")
-      const paidAmount = session.amount_total /100
+    
+      const products = JSON.parse(session.metadata.products )
+      
       const newOrder = new Order({
         user:session.metadata.userId,
         products:products.map(product =>({
@@ -128,12 +126,18 @@ export const checkoutSuccess = async (req, res) => {
         success:true,
         message:"payment successful and order created",
         orderId:newOrder._id,
-        finalAmount:paidAmount,
+        finalAmount:newOrder.totalAmount
+       
       })
     }else{
       return res.status(400).json({success:false,message:"Payment status is pending.."})
     }
-  } catch (error) {
+  } catch (error) {  
+     if(error.code === 11000){
+      const existingOrder = await Order.findOne({stripeSessionId:req.body.sessionId})
+      return res.status(200).json({success:true,message:"Order already processed",orderId:existingOrder._id,finalAmount:existingOrder.totalAmount})
+    }
+
     console.log("error from checkoutsuccess controller " ,error.message)
     res.status(500).json({success:false,message:"server error", Error:error.message})
   }

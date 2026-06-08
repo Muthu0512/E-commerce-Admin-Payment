@@ -30,7 +30,6 @@ export const useProductStore = create((set) => ({
       
     } catch (error) {
       set({loading:false})
-      console.log("error in fetcing featured products", error.messsage)
       toast.error(error?.response?.data?.message)
     }
   },
@@ -40,8 +39,7 @@ export const useProductStore = create((set) => ({
       const res = await axios.get("/products");
       set({ products: res.data.product, loading: false });
     } catch (error) {
-      console.log(error.message, "message from fetching products");
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message || "Error while fetching products");
     }
   },
   
@@ -51,10 +49,10 @@ export const useProductStore = create((set) => ({
     try {
         const res = await axios.get (`/products/category/${category}`)
         set({products:res.data.products, loading:false})
-        console.log("get Item by category", res.data)
+       
     } catch (error) {
-        toast.error(error.message)
-        console.log("error from get Products by category")
+        toast.error(error?.response?.data?.message || "Error while get proudcts by Category")
+        
     }
   },
 
@@ -73,7 +71,7 @@ export const useProductStore = create((set) => ({
         loading: false,
       }));
     } catch (error) {
-      console.log("error from toggle feature", error.message);
+    
       set({ loading: false });
     }
   },
@@ -94,7 +92,7 @@ export const useProductStore = create((set) => ({
       toast.error(
         error.response.data.error || "might be a problem in deleting",
       );
-      console.log(error.message);
+      
     }
   },
 }));

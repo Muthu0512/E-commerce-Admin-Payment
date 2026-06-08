@@ -5,9 +5,9 @@ import {Link} from "react-router-dom"
 const CancelPage = () => {
   return (
     <div className='max-h-screen w-full flex items-center justify-center'>
-         <div className="  bg-gray-900/65 w-2xs mt-12  p-4 space-y-4 flex flex-col items-center justify-center rounded-md shadow-lg shadow-emerald-900">
+         <div className="  bg-gray-900/65 w-3xs sm:w-2xs mt-12  p-4 space-y-4 flex flex-col items-center justify-center rounded-md shadow-lg shadow-emerald-900">
         <XCircle className="size-12 text-3xl text-red-500" />
-        <h4 className=" text-red-500 text-lg">Your order has been Cancelled..</h4>
+        <h4 className=" text-red-500 text-lg text-center">Your order has been Cancelled..</h4>
         <p className="text-sm ">
           No charges made...
         </p>

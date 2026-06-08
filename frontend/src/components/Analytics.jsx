@@ -29,10 +29,9 @@ const Analytics = () => {
         setAnalyticsData(response.data.analyticsData);
         setDailySalesData(response.data.dailySalesData);
         setIsLoading(false);
-        console.log(response);
-      } catch (error) {
+            } catch (error) {
         setIsLoading(false);
-        console.log(error.message);
+       
       } finally {
         setIsLoading(false);
       }
@@ -46,8 +45,9 @@ const Analytics = () => {
   }
 
   return (
-    <motion.div initial={{opacity:0,x:100}} animate={{opacity:1,x:0}} transition={{duration:1.5}} className="min-h-screen max-w-screen  ">
-      <div className="max-w-screen  p-8 overflow-hidden">
+    <motion.div initial={{opacity:0,x:100}} animate={{opacity:1,x:0}} transition={{duration:1.5}}
+     className="min-h-screen max-w-full  ">
+      <div className="w-full  p-8 overflow-hidden">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
           <AnalyticsCard
             title="Total Products"
@@ -72,7 +72,7 @@ const Analytics = () => {
         </div>
       </div>
       
-      <ResponsiveContainer width="100%" height={450}> 
+      <ResponsiveContainer width="100%" height={500} className="overflow-x-scroll sm:overflow-hidden  "> 
         <LineChart data={dailySalesData}>
             <CartesianGrid  strokeDasharray={"10 10"}  ></CartesianGrid>
             <XAxis dataKey={"date"}  stroke={"Green"}/>

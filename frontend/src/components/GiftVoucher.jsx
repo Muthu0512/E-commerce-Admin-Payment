@@ -23,7 +23,7 @@ const GiftVoucher = () => {
     setUserInputCode("");
   }
   return (
-    <div className="bg-gray-900 w-fit mx-8 my-4 p-2 text-center border-gray-600 border-2 rounded-md">
+    <div className="bg-gray-900 w-fit mx-3 my-4 p-2 text-center border-gray-600 border-2 rounded-md">
       <h4 className=" font-semibold py-3 text-emerald-500">
         Do you have a voucher or gift card ?
       </h4>

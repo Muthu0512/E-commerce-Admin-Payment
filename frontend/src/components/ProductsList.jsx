@@ -7,18 +7,15 @@ const ProductsList = () => {
 const {products,toggleFeaturedProducts,deleteProduct} = useProductStore()
 
 
-useEffect(()=>{
-console.log("products",products)
-},[products])
 
 
   return (
 
-    <motion.div initial={{opacity:0,y:100}} animate={{opacity:1,y:0}} transition={{duration:1.5}} className=' min-w-3xl overflow-hidden px-auto py-4 mt-4'>
-      <table className='min-w-full border-collapse '>
-        <thead className='text-xl  bg-gray-800 text-emerald-600'>
+    <motion.div initial={{opacity:0,y:100}} animate={{opacity:1,y:0}} transition={{duration:1}} className='w-screen sm:min-w-3xl  px-auto py-4 mt-4 overflow-scroll'>
+      <table className='min-w-full border-collapse   '>
+        <thead className='text-2xs  sm:text-2xl  bg-gray-800 text-emerald-600'>
           <tr className='tracking-wider  mb- uppercase'>
-            <th className="py-1 px-2 text-center"> S . No</th>
+            <th className="py-1 px-2 text-center"> S.No</th>
             <th className='py-1 px-2 text-center' >
               Product
             </th>
@@ -46,7 +43,7 @@ console.log("products",products)
               <td className='px-2 py-2 text-center'>
                 <div className='flex gap-2  items-center justify-around '>
                 {product.name.charAt(0).toUpperCase() +product.name.slice(1)}
-                <img src={product.image} alt={product.name} loading='eager' className='size-12 rounded-full object-cover'/>
+                <img src={product.image} alt={product.name} loading='eager' className='size-6 sm:size-12 rounded-full object-cover'/>
                 </div>
                 
               </td> 

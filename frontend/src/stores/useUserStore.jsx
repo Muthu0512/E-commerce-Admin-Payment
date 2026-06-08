@@ -32,7 +32,7 @@ export const useUserStore = create((set, get) => ({
     try {
       const res = await axios.post("/auth/login", { email, password });
       set({ user: res?.data, loading: false });
-      toast.success(res?.data?.message);
+      toast.success(`Welcome ${res?.data?.user.name}`);
     } catch (error) {
       toast.error(error?.response?.data?.message);
       set({ loading: false });
@@ -51,17 +51,17 @@ export const useUserStore = create((set, get) => ({
   authenticationCheck: async () => {
     set({ checkingAuth: true });
 
-    const timeout = setTimeout(()=>{
-      set({checkingAuth:false})
-    },3000)
+    const timeout = setTimeout(() => {
+      set({ checkingAuth: false });
+    }, 3000);
     try {
       const res = await axios.get("/auth/profile");
       set({ user: res?.data, checkingAuth: false });
-      clearTimeout(timeout)
+      clearTimeout(timeout);
     } catch (error) {
       toast.error(error?.response?.data?.message);
       set({ user: null, checkingAuth: false });
-      clearTimeout(timeout)
+      clearTimeout(timeout);
     }
   },
   refreshToken: async () => {
@@ -71,12 +71,11 @@ export const useUserStore = create((set, get) => ({
     try {
       const response = await axios.post("/auth/refresh-token");
       set({ user: response.data.user, checkingAuth: false });
-      console.log("refreshtoken onClick response ", response.data.user);
+
       return response.data;
     } catch (error) {
       set({ user: null, checkingAuth: false });
-      toast.error(error?.response?.data?.message);
-      console.log("error from user store refreshToken", error.message);
+      toast.error(error?.response?.data?.message || "Error from refreshToken ");
       throw error;
     }
   },

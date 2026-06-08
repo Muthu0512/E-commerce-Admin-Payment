@@ -13,7 +13,6 @@ const PeopleAlsoBought = () => {
     const fetchRecommentations = async () => {
       try {
         const res = await axios.get("products/recommended");
-        console.log("recommented response", res);
         setRecommended(res.data);
       } catch (error) {
         toast.error(error.response || "error occured in fetching products");
@@ -26,7 +25,9 @@ const PeopleAlsoBought = () => {
 
   if (isLoading)
     return (
-      <h2 className="h-screen w-full text-4xl text-emerald-600/80 animate-ping flex justify-center items-center">Please wait....</h2>
+      <h2 className="h-screen w-full text-4xl text-emerald-600/80 animate-ping flex justify-center items-center">
+        Please wait....
+      </h2>
     );
 
   return (

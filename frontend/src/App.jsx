@@ -49,11 +49,11 @@ function App() {
           />
           <Route
             path="/signup"
-            element={!user ? <SignUp /> : <Navigate to="/" />}
+            element={!user ? <SignUp /> : <Navigate to={"/"} />}
           />
           <Route
             path="/login"
-            element={!user ? <LoginPage /> : <Navigate to="/" />}
+            element={!user ? <LoginPage /> : <Navigate to={"/"} />}
           />
           <Route
             path="/admin-dashboard"
@@ -65,10 +65,11 @@ function App() {
             path="/category/:category"
             element={user ? <CategoryPage /> : <Navigate to="/login" />}
           />
-          {/* <Route path="/cart" element={checkingAuth ? null : user ? (<CartPage />) : (<Navigate to="/login" />)}/> */}
-          <Route path="/cart" element={ <CartPage /> }/>
+
+          <Route path="/cart"element={user ? <CartPage /> : <Navigate to={"/login"} />}/>
+
           <Route path="/payment-success" element={<SuccessPage />} />
-          <Route path="/payment-cancel" element={<CancelPage />} />
+          <Route path="/payment-cancel"element={ <CancelPage /> }/>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Toaster toastOptions={{ duration: 2000 }} />

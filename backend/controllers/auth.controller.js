@@ -55,11 +55,11 @@ export const login = async (req, res) => {
       const { accessToken, refreshToken } =await generateTokens(user._id);
       await saveRefreshToken(user._id, refreshToken);
      setCookies(res, accessToken, refreshToken);
-      res.json({
+      res.json({user:{
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role,
+        role: user.role},
          message:"logged in successfully"
       });
     } else {
@@ -109,6 +109,9 @@ export const refreshAccessToken =async(req,res) =>{
      return  res.status(401).json({message:"Invalid refresh token"})
     }
    const user = await User.findById(decoded.userId).select("-password")
+    if(!user){
+      return res.status(404).json({message:"user not found"})
+    }
     const accessToken = jwt.sign({userId:decoded.userId},process.env.ACCESS_TOKEN_SECRET,{expiresIn:"15m"})
 
     res.cookie("accessToken",accessToken,{
@@ -117,7 +120,7 @@ export const refreshAccessToken =async(req,res) =>{
       sameSite:"strict",
       maxAge:15*60*1000
     })
-   return res.json({message:"Token refreshed successfully"})
+   return res.json({user:{id:user._id,name:user.name,email:user.email,role:user.role},message:"Token refreshed successfully"})
   } catch (error) {
    return res.status(500).json({message:"Server Error", Error:error.message})
   }

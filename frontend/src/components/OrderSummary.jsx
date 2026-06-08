@@ -20,21 +20,18 @@ const OrderSummary = () => {
     const res  = await axios.post("/payments/create-payment-session", {products:cart,couponCode:coupon? coupon.code:null})
     const {url} = res.data
   
-    console.log("payment ",res.data)
-    console.log("total,subTotal,Savings",total,subTotal,savings,coupon)
-
-   if(url){
+      if(url){
     window.location.assign(url)
    }
     if (payment.error){
-      console.error('paymentError' ,payment.error.message)
+      toast.error(payment?.error?.message)
     }
   }
   
   return (
     <div>
       <div className="w-fit  ">
-        <section className="bg-gray-900 w-full mx-8 my-4 p-2 text-center border-gray-600 border-2 rounded-md">
+        <section className="bg-gray-900 w-full mx-3 my-4 p-2 text-center border-gray-600 border-2 rounded-md">
           <h3 className="text-xl font-semibold py-2 text-emerald-500">
             Order summary
           </h3>
@@ -77,7 +74,7 @@ const OrderSummary = () => {
               <span className="text-s"> or</span>{" "}
               <Link
                 to={"/"}
-                className="text-emerald-600 underline  underline-offset-4 cursor-pointer"
+                className="text-emerald-600 underline   underline-offset-4 hover:scale-105 transition-transform duration-150 cursor-pointer"
               >
                 {" "}
                 continue shopping{" "}

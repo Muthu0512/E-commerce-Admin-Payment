@@ -13,8 +13,7 @@ const CartPage = () => {
   useEffect(() => {
     getCartItems();
   }, [getCartItems]);
-  console.log("mongoDBcart", cart);
-  return (
+   return (
     <motion.div initial={{opacity:0,y:-100}} animate={{opacity:1,y:0}} transition={{duration:0.7}} className="min-h-screen  py-4  max-w-full ">
            {cart.length == 0 ? (
         <div className="flex flex-col gap-5 items-center justify-center mx-5 pt-10">
@@ -42,14 +41,14 @@ const CartPage = () => {
             </div>
           </div>
 
-          <div className="m-4 col-span-12  md:col-span-8">
+          <div className="my-4 mx-auto col-span-12  md:col-span-8">
             {cart.map((product, index) => (
               <CartCard key={index} product={product} />
             ))}
 
             {cart.length > 0 && <PeopleAlsoBought />}
           </div>
-          <div className="col-span-4 md:col-span-3">
+          <div className="col-span-10 md:col-span-3 px-4 sm:px-0  ">
             <OrderSummary />
           </div>
         </div>

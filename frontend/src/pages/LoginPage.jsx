@@ -14,8 +14,8 @@ const LoginPage = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-     login(formData)
-    ;
+     login(formData);
+     
   }
   return (
     <div className="flex flex-col mx-10 md:mx-auto px-auto py-10 gap-10 items-center justify-center">
