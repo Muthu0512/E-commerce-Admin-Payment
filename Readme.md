@@ -22,6 +22,8 @@ https://e-commerce-admin-payment.onrender.com/
 - Zustand (State Management)
 - Axios
 - Framer Motion (Animation)
+
+- 
 **Backend:**
 - Node.js
 - Express.js
