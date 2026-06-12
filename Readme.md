@@ -22,18 +22,9 @@ https://e-commerce-admin-payment.onrender.com/
 - Zustand (State Management)
 - Axios
 - Framer Motion (Animation)
-
 **Backend:**
 - Node.js
 - Express.js
 - MongoDB 
 - Redis (Upstash)
 - Stripe Payment Gateway
-
-## Author
-
-**Muthupandi S** — MERN Stack Developer  
-muthupandi5199.desk@gmail.com  
-[LinkedIn]-(https://www.linkedin.com/in/muthupandi-full-stack-web-developer/) 
-[GitHub]-(https://github.com/Muthu0512)  
-[Portfolio]-(https://muthupandi-portfolio-1r6j.onrender.com)
