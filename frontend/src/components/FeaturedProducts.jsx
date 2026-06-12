@@ -56,13 +56,13 @@ const FeaturedProducts = ({ featuredProducts }) => {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-3/4  h-32 sm:h-40 mt-2   rounded-md object-cover"
+                className="w-full  h-24  sm:h-36 mt-2 px-2  rounded-md object-cover"
                 loading="lazy"
               />
               <h4 className="m-1 text-xl sm:text-2xl text-emerald-500">
                 {product.name.charAt(0).toUpperCase() + product.name.slice(1)}
               </h4>
-              <section className="flex justify-around items-center w-full my-1 px-3 py-2 ">
+              <section className="flex justify-around items-center gap-6 w-fit my-1 px-2 py-2  ">
                 <p className="flex font-bold text-lg pl-4 text-blue-400/70">
                   ₹ {product.price}
                 </p>

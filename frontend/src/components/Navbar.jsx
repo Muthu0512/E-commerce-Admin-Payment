@@ -29,7 +29,7 @@ function Navbar() {
           </Link>
         )}
 
-        {isAdmin  && user&& (
+        {isAdmin  && user && (
           <Link to="/admin-dashboard" className="flex items-center gap-0.5 text-emerald-400   rounded-lg group hover:text-emerald-800 transition duration-400 ease-in-out">
             <Lock className="size-5 sm:size-7" />
             <span className="hidden sm:inline"> Dashboard</span>
