@@ -59,9 +59,10 @@ export const useUserStore = create((set, get) => ({
       set({ user: res?.data, checkingAuth: false });
       clearTimeout(timeout);
     } catch (error) {
-      toast.error(error?.response?.data?.message);
-      set({ user: null, checkingAuth: false });
       clearTimeout(timeout);
+      set({ user: null, checkingAuth: false });
+      if(error.response && error.response.status !=401 )
+      toast.error(error?.response?.data?.message || "Server Error, try again");
     }
   },
   refreshToken: async () => {

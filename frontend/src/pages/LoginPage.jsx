@@ -1,12 +1,14 @@
 import { React, useState } from "react";
 import InputForm from "../components/InputForm";
-import { AtSign, KeySquare, MoveRight,Loader,LogIn } from "lucide-react";
+import { AtSign, KeySquare, MoveRight, Loader, LogIn } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
+import PasswordReveal from "../components/PasswordReveal";
 
 const LoginPage = () => {
-  const {login,loading} = useUserStore()
+  const { login, loading } = useUserStore();
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,8 +16,7 @@ const LoginPage = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-     login(formData);
-     
+    login(formData);
   }
   return (
     <div className="flex flex-col mx-10 md:mx-auto px-auto py-10 gap-10 items-center justify-center">
@@ -34,9 +35,9 @@ const LoginPage = () => {
         transition={{ duration: 1, delay: 0.2 }}
       >
         <div className="bg-gray-900  rounded-md shadow-teal-900 shadow-2xl">
-          <form onSubmit={handleSubmit}
-            className="flex flex-col w-full gap-1 px-4 sm:px-14 py-5 space-y-2 "
-            
+          <form
+            onSubmit={handleSubmit}
+            className="relative flex flex-col w-full gap-1 px-4 sm:px-14 py-5 space-y-2 "
           >
             <InputForm
               label="Email"
@@ -49,23 +50,43 @@ const LoginPage = () => {
                 setFormData({ ...formData, email: e.target.value })
               }
             />
-            <InputForm
-              label="Password "
-              id="password"
-              type="password"
-              placeholder="*******"
-              icon={KeySquare}
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-            />
-            <button type="submit" className=" text-gray-900 bg-emerald-500 rounded-md mt-2 px-2 py-1 hover:bg-emerald-600 transition duration-100" disabled ={loading}>{
-              loading? (<div className=" flex gap-2 items-center justify-center "><Loader className="size-4"/>Loading....</div>):(<div className=" flex gap-2 items-center justify-center "> <LogIn className="size-4"/> Login</div>)
-              }
-              </button> 
+            <div className="relative">
+              <InputForm
+                label="Password "
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="*******"
+                icon={KeySquare}
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+              />
+              <PasswordReveal
+                showPassword={showPassword}
+                setShowPassword={setShowPassword}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className=" text-gray-900 bg-emerald-500 rounded-md mt-2 px-2 py-1 hover:bg-emerald-600 transition duration-100"
+              disabled={loading}
+            >
+              {loading ? (
+                <div className=" flex gap-2 items-center justify-center ">
+                  <Loader className="size-4" />
+                  Loading....
+                </div>
+              ) : (
+                <div className=" flex gap-2 items-center justify-center ">
+                  {" "}
+                  <LogIn className="size-4" /> Login
+                </div>
+              )}
+            </button>
           </form>
-        
+
           <div className="mx-auto my-2 flex flex-col md:flex-row gap-2 items-center justify-evenly px-2 pb-5 text-xs sm:text-xl ">
             <h3 className="">Don't have an account ?</h3>
             <Link to={"/signup"} className="flex items-center justify-center">

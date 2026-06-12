@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import { UserRoundPen, Loader, AtSign, KeySquare, MoveRight,UserPlus } from "lucide-react";
 import { Link } from "react-router-dom";
 import {useUserStore} from "../stores/useUserStore.jsx";
+import PasswordReveal from "../components/PasswordReveal.jsx"
 
 const SignUp = () => {
   const {signup,loading}=useUserStore()
-  
+  const [showPassword,setShowPassword] = useState(false)
+  const [showConfirmPassword,setShowConfirmPassword] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,7 +45,7 @@ const SignUp = () => {
       >
         <div className="bg-gray-900  rounded-md shadow-teal-900 shadow-2xl">
           <form onSubmit={handleSubmit}
-            className="flex flex-col gap-1 px-2 sm:px-6 py-5 space-y-2 "
+            className="flex flex-col gap-1 px-2 sm:px-6 py-5 space-y-2 relative "
             
           >
             <InputForm
@@ -68,28 +70,38 @@ const SignUp = () => {
                 setFormData({ ...formData, email: e.target.value })
               }
             />
+            <div className="relative">
+
             <InputForm
               label="Password "
               id="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="*******"
               icon={KeySquare}
               value={formData.password}
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
+             
             />
+            <PasswordReveal showPassword={showPassword} setShowPassword={setShowPassword}/>
+            </div>
+            <div  className="relative">
             <InputForm
               label="Confirm Password "
               id="confirmPassword"
-              type="password"
+              type={showConfirmPassword? "text":"password"}
               placeholder="*******"
               icon={KeySquare}
               value={formData.confirmPassword}
               onChange={(e) =>
                 setFormData({ ...formData, confirmPassword: e.target.value })
               }
+             
             />
+
+             <PasswordReveal showPassword={showConfirmPassword} setShowPassword={setShowConfirmPassword}/>
+            </div>
              <button type="submit" className=" text-gray-700 bg-emerald-500 rounded-md mt-2 px-2 py-1 hover:bg-emerald-600 transition duration-100" disabled ={loading}>{
               loading? (<div className=" flex gap-2 items-center justify-center "><Loader className="size-4"/>Loading....</div>):(<div className=" flex  gap-2 items-center justify-center "> <UserPlus className="size-4"/> Signup</div>)
               }
